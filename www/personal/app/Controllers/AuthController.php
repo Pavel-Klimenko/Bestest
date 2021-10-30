@@ -46,9 +46,9 @@ class AuthController extends Controller
         $userDataFromDB = $this->model->where('LOGIN', $data['login'])->findAll();
 
         if (empty($userDataFromDB)) {
-            $errors[] = 'Пользователь с данным логином не найден';
+            $errors[] = 'User with this username was not found';
         } elseif (!password_verify($data['pass'], $userDataFromDB[0]['PASSWORD'])) {
-            $errors[] = 'Неверный пароль';
+            $errors[] = 'Wrong password';
         }
 
         //We check for errors and display it to the user
